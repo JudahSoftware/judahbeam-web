@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Judah Beam: beam it to every device you own</title>
-<meta name="description" content="Put text, a link, a picture, a file or a folder in the box on one device. A moment later it's on your phone, your PC and the web. Free for Windows, Android and any web browser.">
+<meta name="description" content="Put text, a link, a picture, a file or a folder in the box on one device. A moment later it's on your phone, your PC and the web. Free for Windows, Mac, Android and any web browser.">
 <meta name="theme-color" content="#4f46e5">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -58,6 +58,7 @@
         <div class="ctas" data-dlwrap>
           <a class="btn white" id="cta-win" data-installer href="https://github.com/JudahSoftware/JudahBeam-releases/releases/latest"><svg aria-hidden="true"><use href="#i-win"/></svg>Download for Windows</a>
           <a class="btn ghost" id="cta-play" href="https://play.google.com/store/apps/details?id=com.judah.beam"><svg aria-hidden="true"><use href="#i-play"/></svg>Google Play</a>
+          <a class="btn ghost" id="cta-mac" href="https://github.com/JudahSoftware/JudahBeam-releases/releases/download/mac/JudahBeam-Mac.dmg" hidden><svg aria-hidden="true"><use href="#i-apple"/></svg>Download for Mac</a>
           <span class="btn off" id="cta-apple"><svg aria-hidden="true"><use href="#i-apple"/></svg>App Store <span class="soon">Coming soon</span></span>
           <a class="btn ghost" id="cta-web" href="/app/" hidden><svg aria-hidden="true"><use href="#i-globe"/></svg><span class="label">Use it in the browser</span></a>
           <p class="dlnote" hidden role="status"><b>Downloading.</b> Open JudahBeam-Setup when it finishes. If Windows says it protected your PC, click More info, then Run anyway.</p>
@@ -116,6 +117,16 @@
           <div class="acts"><a class="btn brand sm" data-installer href="https://github.com/JudahSoftware/JudahBeam-releases/releases/latest"><svg aria-hidden="true"><use href="#i-save"/></svg>Download for Windows</a></div>
           <p class="dlnote" hidden role="status"><b>Downloading.</b> Open JudahBeam-Setup when it finishes. If Windows says it protected your PC, click More info, then Run anyway.</p>
         </div>
+        <!-- Its own release (tag mac), never GitHub's "latest", so the Windows lookup in
+             site.js never picks it up. Published with app/tool/release_mac.ps1. -->
+        <div class="get" id="get-mac">
+          <span class="tag"></span>
+          <span class="ic" aria-hidden="true"><svg><use href="#i-apple"/></svg></span>
+          <h3>Mac</h3>
+          <p class="say">Signed and checked by Apple.</p>
+          <div class="acts"><a class="btn brand sm" href="https://github.com/JudahSoftware/JudahBeam-releases/releases/download/mac/JudahBeam-Mac.dmg"><svg aria-hidden="true"><use href="#i-save"/></svg>Download for Mac</a></div>
+          <p class="macnote">Open it, then drag Judah Beam into Applications.</p>
+        </div>
         <div class="get" id="get-android">
           <span class="tag"></span>
           <span class="ic" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
@@ -126,7 +137,7 @@
         <div class="get" id="get-apple">
           <span class="tag"></span>
           <span class="ic" aria-hidden="true"><svg><use href="#i-apple"/></svg></span>
-          <h3>iPhone and Mac</h3>
+          <h3>iPhone and iPad</h3>
           <p class="say">Coming soon to the App Store. Everything works in Safari until then.</p>
           <div class="acts"><a class="btn line sm" href="/app/">Use it in Safari for now</a></div>
         </div>

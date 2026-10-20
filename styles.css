@@ -120,7 +120,7 @@ img, svg { display: block; }
 .k-folder { background: var(--folder-bg); color: var(--folder-fg); }
 
 /* ---------------------------------------------------------------- get the app */
-.gets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+.gets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
 .get { border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px; background: var(--surface); }
 .get.here { border-color: var(--accent-line); box-shadow: 0 0 0 3px var(--accent-soft); }
 .get .tag { font: 700 11px var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
@@ -132,6 +132,7 @@ img, svg { display: block; }
 .get h3 { font-size: 17px; font-weight: 700; }
 .get .say { color: var(--ink-2); font-size: 14.5px; flex: 1; }
 .get .acts { display: flex; flex-direction: column; gap: 8px; }
+.get .macnote { color: var(--ink-3); font-size: 13.5px; line-height: 1.4; }
 
 /* ---------------------------------------------------------------- footer */
 .foot { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 14px; }
