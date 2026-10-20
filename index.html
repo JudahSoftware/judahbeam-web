@@ -1,46 +1,157 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
-  <base href="/">
-
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
-  <!-- iOS meta tags & icons -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="Judah Beam">
-  <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>Judah Beam</title>
-  <link rel="manifest" href="manifest.json">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Judah Beam: beam it to every device you own</title>
+<meta name="description" content="Put text, a link, a picture, a file or a folder in the box on one device. A moment later it's on your phone, your PC and the web. Free for Windows, Android and any web browser.">
+<meta name="theme-color" content="#4f46e5">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!--
-    You can customize the "flutter_bootstrap.js" script.
-    This is useful to provide a custom configuration to the Flutter loader
-    or to give the user feedback during the initialization process.
+<!-- The Judah Beam website, www.judahbeam.com. Built to the approved mockup
+     design/website-mockup.html (Step 2). The web app itself lives at /app/.
+     No framework, no build step; site.js puts the visitor's device first. -->
 
-    For more details:
-    * https://docs.flutter.dev/platform-integration/web/initialization
-  -->
-  <script src="flutter_bootstrap.js" async></script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-win" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5.5 10.5 4.5v7H3zM11.5 4.4 21 3v8.5h-9.5zM3 12.5h7.5v7L3 18.5zM11.5 12.5H21V21l-9.5-1.4z"/></symbol>
+    <symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.9-3-.9C7 7.3 5.6 8.2 4.8 9.6c-1.6 2.8-.4 7 1.2 9.2.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.5 1.3-2.6 0 0-2.6-1-2.6-3.6zM14.1 5.8c.6-.8 1.1-1.9 1-3-.9 0-2.1.6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.7-1.3z"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path fill="#34a853" d="M4 3.2v17.6c0 .3.2.5.4.6l9.7-9.4L4.4 2.6c-.2.1-.4.3-.4.6z"/><path fill="#fbbc04" d="m17.4 15.3-3.3-3.3L4.4 21.4c.2.1.5.1.7 0l12.3-6.1z"/><path fill="#4285f4" d="m17.4 8.7-12.3-6c-.2-.1-.5-.1-.7-.1l9.7 9.4 3.3-3.3z"/><path fill="#ea4335" d="M20.4 10.6 17.4 8.7 14.1 12l3.3 3.3 3-1.5c.8-.5.8-1.7 0-2.2z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></g></symbol>
+    <symbol id="i-save" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></g></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+    <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
+    <symbol id="i-pic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#main">Skip to the content</a>
+
+<header class="snav">
+  <div class="wrap navin">
+    <a class="brand" href="./" aria-label="Judah Beam, home"><img class="mark" src="favicon.svg" alt="" width="34" height="34">Judah Beam</a>
+    <nav class="links" aria-label="On this page">
+      <a href="#how">How it works</a><a href="#what">What you can beam</a><a href="#get">Get the app</a>
+    </nav>
+    <a class="btn ghost sm" href="/app/">Log in</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero">
+    <div class="wrap heroin">
+      <div class="herotext">
+        <h1>Beam it to every device you own.</h1>
+        <p class="lede">Put text, a link, a picture, a file or a folder in the box on one device. A moment later it's on your phone, your PC and the web. Send it to someone else too. They don't need the app.</p>
+        <!-- Without JavaScript these show as they are (the Windows PC order); site.js
+             rearranges them for the visitor's device. -->
+        <div class="ctas" data-dlwrap>
+          <a class="btn white" id="cta-win" data-installer href="https://github.com/JudahSoftware/JudahBeam-releases/releases/latest"><svg aria-hidden="true"><use href="#i-win"/></svg>Download for Windows</a>
+          <a class="btn ghost" id="cta-play" href="https://play.google.com/store/apps/details?id=com.judah.beam"><svg aria-hidden="true"><use href="#i-play"/></svg>Google Play</a>
+          <span class="btn off" id="cta-apple"><svg aria-hidden="true"><use href="#i-apple"/></svg>App Store <span class="soon">Coming soon</span></span>
+          <a class="btn ghost" id="cta-web" href="/app/" hidden><svg aria-hidden="true"><use href="#i-globe"/></svg><span class="label">Use it in the browser</span></a>
+          <p class="dlnote" hidden role="status"><b>Downloading.</b> Open JudahBeam-Setup when it finishes. If Windows says it protected your PC, click More info, then Run anyway.</p>
+        </div>
+        <p class="fine" id="hero-fine">Free. Sign in with your mobile number. <span class="more">Already have it? <a href="/app/">Log in</a> to see your things in any browser.</span></p>
+      </div>
+      <div class="beam" aria-hidden="true">
+        <svg class="rays" viewBox="0 0 470 380" focusable="false">
+          <defs><linearGradient id="ray" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity=".15"/></linearGradient></defs>
+          <g stroke="url(#ray)" stroke-width="7" stroke-linecap="round"><line x1="235" y1="318" x2="76" y2="150"/><line x1="235" y1="318" x2="235" y2="98"/><line x1="235" y1="318" x2="394" y2="150"/></g>
+        </svg>
+        <div class="dev d1"><span class="lab"><i></i>Your PC</span><div class="it">Gate code is 4471<small>Just now</small></div></div>
+        <div class="dev d2"><span class="lab"><i></i>The web</span><div class="it">Gate code is 4471<small>Just now</small></div></div>
+        <div class="dev d3"><span class="lab"><i></i>Nate's phone</span><div class="it">Gate code is 4471<small>Just now</small></div></div>
+        <div class="src"><span class="mini">4471</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="how" aria-labelledby="how-h">
+    <div class="wrap">
+      <span class="eyebrow">How it works</span>
+      <h2 id="how-h">One box, on every screen.</h2>
+      <ol class="steps">
+        <li class="step"><span class="n" aria-hidden="true">1</span><h3>Put it in the box</h3><p>Type, paste or drop anything on whatever device is in your hand.</p></li>
+        <li class="step"><span class="n" aria-hidden="true">2</span><h3>It beams everywhere</h3><p>It shows up big on all your other devices right away. History keeps the rest.</p></li>
+        <li class="step"><span class="n" aria-hidden="true">3</span><h3>Send it to anyone</h3><p>Pick a person. They get a text and see it on a web page with a code. No app, no account.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band alt" id="what" aria-labelledby="what-h">
+    <div class="wrap">
+      <span class="eyebrow">What you can beam</span>
+      <h2 id="what-h">Whatever you're holding.</h2>
+      <ul class="kinds">
+        <li class="kind k-text"><svg aria-hidden="true"><use href="#i-text"/></svg>Text</li>
+        <li class="kind k-link"><svg aria-hidden="true"><use href="#i-link"/></svg>Links</li>
+        <li class="kind k-pic"><svg aria-hidden="true"><use href="#i-pic"/></svg>Pictures</li>
+        <li class="kind k-file"><svg aria-hidden="true"><use href="#i-file"/></svg>Files</li>
+        <li class="kind k-folder"><svg aria-hidden="true"><use href="#i-folder"/></svg>Folders</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="get" aria-labelledby="get-h">
+    <div class="wrap">
+      <span class="eyebrow">Get the app</span>
+      <h2 id="get-h">Free on every device. One account.</h2>
+      <div class="gets" id="gets">
+        <div class="get" id="get-win" data-dlwrap>
+          <span class="tag"></span>
+          <span class="ic win" aria-hidden="true"><svg><use href="#i-win"/></svg></span>
+          <h3>Windows PC</h3>
+          <p class="say">Installs for you, no administrator needed. It updates itself.</p>
+          <div class="acts"><a class="btn brand sm" data-installer href="https://github.com/JudahSoftware/JudahBeam-releases/releases/latest"><svg aria-hidden="true"><use href="#i-save"/></svg>Download for Windows</a></div>
+          <p class="dlnote" hidden role="status"><b>Downloading.</b> Open JudahBeam-Setup when it finishes. If Windows says it protected your PC, click More info, then Run anyway.</p>
+        </div>
+        <div class="get" id="get-android">
+          <span class="tag"></span>
+          <span class="ic" aria-hidden="true"><svg><use href="#i-play"/></svg></span>
+          <h3>Android phone</h3>
+          <p class="say">From Google Play.</p>
+          <div class="acts"><a class="btn line sm" href="https://play.google.com/store/apps/details?id=com.judah.beam">Get it on Google Play</a></div>
+        </div>
+        <div class="get" id="get-apple">
+          <span class="tag"></span>
+          <span class="ic" aria-hidden="true"><svg><use href="#i-apple"/></svg></span>
+          <h3>iPhone and Mac</h3>
+          <p class="say">Coming soon to the App Store. Everything works in Safari until then.</p>
+          <div class="acts"><a class="btn line sm" href="/app/">Use it in Safari for now</a></div>
+        </div>
+        <div class="get" id="get-web">
+          <span class="tag"></span>
+          <span class="ic accent" aria-hidden="true"><svg><use href="#i-globe"/></svg></span>
+          <h3>Any web browser</h3>
+          <p class="say">Nothing to install. Your box, History and People.</p>
+          <div class="acts"><a class="btn line sm" href="/app/">Log in</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap footin">
+    <span class="brand"><img class="mark" src="favicon.svg" alt="" width="24" height="24">Judah Beam</span>
+    <a href="https://judahbeam.pages.dev/privacy">Privacy</a>
+    <a href="https://judahbeam.pages.dev/delete-account">Delete your account</a>
+    <span>Part of Judah</span>
+    <span>© 2026 Judah Software</span>
+  </div>
+</footer>
+
+<script src="site.js"></script>
 </body>
 </html>

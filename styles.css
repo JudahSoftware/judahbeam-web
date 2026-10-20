@@ -1,0 +1,171 @@
+/* The Judah Beam website, www.judahbeam.com. The look of the approved mockup
+   design/website-mockup.html: the logo's purple, white marks, Sora for headings and
+   Figtree for reading text. Light and dark follow the visitor's device; the top bar
+   and the hero stay purple in both. No framework, no build step. */
+:root {
+  --brand: #4f46e5;          /* the logo's purple: top bar, hero, filled buttons */
+  --accent: #4f46e5;         /* purple used as text or lines on the page */
+  --accent-soft: #eef0ff; --accent-line: #c9ccfb;
+  --page: #ffffff; --surface: #ffffff; --surface-2: #f6f7fa; --line: #e3e6ec; --line-2: #d5d9e1;
+  --ink: #151821; --ink-2: #4b5262; --ink-3: #6b7383;
+  --link-bg: #e8f4ff; --link-fg: #0b6bcb; --file-bg: #eefaf1; --file-fg: #15803d;
+  --pic-bg: #fdf0f7; --pic-fg: #be185d; --folder-bg: #fff4e0; --folder-fg: #9a5b00;
+  --ok: #16a34a; --white: #ffffff; --win: #0078d4;
+  --display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --gutter: 44px;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent: #a5a0ff; --accent-soft: #24264a; --accent-line: #4a47a0;
+    --page: #12141b; --surface: #1b1e27; --surface-2: #171a22; --line: #2b3040; --line-2: #3a4050;
+    --ink: #eceef3; --ink-2: #b7bcc8; --ink-3: #959cab;
+    --link-bg: #1b2a3c; --link-fg: #6fb3f2; --file-bg: #1b2e22; --file-fg: #5fcb7f;
+    --pic-bg: #34202c; --pic-fg: #f08bbe; --folder-bg: #33270f; --folder-fg: #f0b45a;
+    --win: #4aa8f0;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.5 var(--body); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+img, svg { display: block; }
+[hidden] { display: none !important; }
+
+/* one centred column for every band; never narrower than a 16px gutter each side */
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+
+/* keyboard focus is always visible: white on the purple, purple on the page */
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.snav :focus-visible, .hero :focus-visible { outline-color: var(--white); }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 10; background: var(--white); color: var(--brand); font-weight: 700; padding: 10px 14px; border-radius: 10px; text-decoration: none; }
+.skip:focus { top: 12px; }
+
+/* ---------------------------------------------------------------- buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 11px; font: 600 15px var(--body); text-decoration: none; white-space: nowrap; padding: 0 18px; min-height: 46px; border: 0; cursor: pointer; }
+.btn svg { width: 19px; height: 19px; flex: none; }
+.btn.white { background: var(--white); color: var(--brand); }
+.btn.white:hover { background: #f1f1ff; }
+.btn.ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.btn.ghost:hover { background: rgba(255,255,255,.1); }
+.btn.brand { background: var(--brand); color: var(--white); }
+.btn.brand:hover { background: #3d34c9; }
+.btn.line { background: var(--surface); color: var(--accent); box-shadow: inset 0 0 0 1.5px var(--accent-line); }
+.btn.line:hover { background: var(--accent-soft); }
+.btn.off { background: rgba(255,255,255,.12); color: rgba(255,255,255,.85); box-shadow: inset 0 0 0 1px rgba(255,255,255,.25); cursor: default; }
+.btn.sm { min-height: 38px; font-size: 14px; padding: 0 14px; border-radius: 9px; }
+.soon { font: 700 10.5px var(--body); letter-spacing: .05em; text-transform: uppercase; background: var(--surface-2); color: var(--ink-3); border: 1px solid var(--line); border-radius: 99px; padding: 2px 8px; white-space: nowrap; }
+.btn.off .soon { background: rgba(255,255,255,.16); color: var(--white); border-color: transparent; }
+
+/* ---------------------------------------------------------------- top bar */
+.snav { background: var(--brand); color: var(--white); }
+.navin { display: flex; align-items: center; gap: 26px; padding-top: 16px; padding-bottom: 16px; }
+.snav .brand { display: flex; align-items: center; gap: 10px; font: 700 19px var(--display); letter-spacing: -.02em; margin-right: auto; color: var(--white); text-decoration: none; }
+.snav .brand .mark { width: 34px; height: 34px; border-radius: 8px; box-shadow: 0 0 0 1px rgba(255,255,255,.28); }
+.snav .links { display: flex; gap: 26px; }
+.snav .links a { color: rgba(255,255,255,.88); text-decoration: none; font-weight: 500; font-size: 15px; }
+.snav .links a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 4px; }
+
+/* ---------------------------------------------------------------- hero */
+.hero { background: var(--brand); color: var(--white); overflow: hidden; }
+.heroin { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: 40px; align-items: center; padding-top: 44px; padding-bottom: 56px; }
+.hero h1 { font-size: 54px; line-height: 1.04; font-weight: 800; letter-spacing: -.035em; }
+.hero .lede { font-size: 18px; line-height: 1.5; color: rgba(255,255,255,.9); max-width: 540px; margin-top: 16px; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.hero .fine { font-size: 14px; color: rgba(255,255,255,.8); margin-top: 14px; }
+.hero .fine a { color: var(--white); font-weight: 600; }
+
+/* the line after Download for Windows */
+.dlnote { flex-basis: 100%; border-radius: 12px; padding: 12px 14px; font-size: 14px; line-height: 1.45; background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--ink); }
+.hero .dlnote { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: var(--white); max-width: 540px; }
+.dlnote a { color: inherit; font-weight: 600; }
+
+/* the logo, grown into the hero: one phone at the bottom beams to three devices.
+   Laid out on a 470 x 380 picture; with container units it shrinks as one piece. */
+.beam { position: relative; width: 100%; max-width: 470px; margin: 0 auto; aspect-ratio: 470 / 380; container-type: inline-size; }
+.beam svg.rays { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dev { position: absolute; background: #ffffff; color: #151821; border-radius: 14px; box-shadow: 0 14px 34px rgba(16,12,80,.35); padding: 10px 11px; width: 138px; width: 29.4cqw; padding: 2.1cqw 2.3cqw; border-radius: 3cqw; }
+.dev .lab { font: 700 9.5px var(--body); font-size: 2.05cqw; letter-spacing: .09em; text-transform: uppercase; color: #6b7383; display: flex; align-items: center; gap: 5px; white-space: nowrap; }
+.dev .lab i { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); display: block; flex: none; }
+.dev .it { margin-top: 7px; margin-top: 1.5cqw; border: 1px solid #e3e6ec; border-radius: 9px; padding: 7px 8px; padding: 1.5cqw 1.7cqw; font-size: 12px; font-size: 2.6cqw; line-height: 1.3; }
+.dev .it small { display: block; color: #6b7383; font-size: 10.5px; font-size: 2.25cqw; margin-top: 2px; }
+.dev.d1 { left: 1.3%; top: 15.3%; }
+.dev.d2 { left: 35.3%; top: 1%; }
+.dev.d3 { right: 1.3%; top: 15.3%; }
+.src { position: absolute; left: 50%; bottom: 1.6%; transform: translateX(-50%); width: 23.8%; aspect-ratio: 1; border-radius: 50%; background: #ffffff; display: grid; place-items: center;
+  box-shadow: 0 0 0 14px rgba(255,255,255,.14), 0 14px 34px rgba(16,12,80,.35); box-shadow: 0 0 0 3cqw rgba(255,255,255,.14), 0 14px 34px rgba(16,12,80,.35); }
+.src .mini { width: 39%; height: 66%; border-radius: 9px; border: 3px solid var(--brand); display: grid; place-items: center; font: 800 10px var(--display); font-size: 2.15cqw; color: var(--brand); }
+
+/* ---------------------------------------------------------------- bands */
+.band { padding: 56px 0; }
+.band.alt { background: var(--surface-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.eyebrow { display: block; font: 700 12px var(--body); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.band h2 { font-size: 32px; font-weight: 700; letter-spacing: -.025em; margin-top: 6px; }
+.steps { list-style: none; padding: 0; margin: 28px 0 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.step { display: flex; flex-direction: column; gap: 8px; }
+.step .n { width: 34px; height: 34px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); font: 800 15px/34px var(--display); text-align: center; }
+.step h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em; }
+.step p { color: var(--ink-2); font-size: 15.5px; }
+.kinds { list-style: none; padding: 0; margin: 22px 0 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.kind { display: inline-flex; align-items: center; gap: 8px; border-radius: 99px; padding: 8px 15px 8px 10px; font-weight: 600; font-size: 15px; }
+.kind svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.k-text { background: var(--accent-soft); color: var(--accent); }
+.k-link { background: var(--link-bg); color: var(--link-fg); }
+.k-pic { background: var(--pic-bg); color: var(--pic-fg); }
+.k-file { background: var(--file-bg); color: var(--file-fg); }
+.k-folder { background: var(--folder-bg); color: var(--folder-fg); }
+
+/* ---------------------------------------------------------------- get the app */
+.gets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 26px; }
+.get { border: 1px solid var(--line); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 10px; background: var(--surface); }
+.get.here { border-color: var(--accent-line); box-shadow: 0 0 0 3px var(--accent-soft); }
+.get .tag { font: 700 11px var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.get .tag:empty { display: none; }
+.get .ic { width: 42px; height: 42px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink); }
+.get .ic.win { color: var(--win); }
+.get .ic.accent { color: var(--accent); }
+.get .ic svg { width: 22px; height: 22px; }
+.get h3 { font-size: 17px; font-weight: 700; }
+.get .say { color: var(--ink-2); font-size: 14.5px; flex: 1; }
+.get .acts { display: flex; flex-direction: column; gap: 8px; }
+
+/* ---------------------------------------------------------------- footer */
+.foot { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 14px; }
+.footin { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; padding-top: 22px; padding-bottom: 22px; }
+.foot .brand { display: flex; align-items: center; gap: 8px; font: 700 15px var(--display); color: var(--ink); margin-right: auto; }
+.foot .brand .mark { width: 24px; height: 24px; border-radius: 6px; }
+.foot a { color: var(--ink-2); text-decoration: none; }
+.foot a:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------------- smaller screens */
+@media (max-width: 1000px) {
+  .gets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .heroin { grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: 28px; }
+  .hero h1 { font-size: 44px; }
+}
+@media (max-width: 760px) {
+  :root { --gutter: 20px; }
+  .snav .links { display: none; }
+  .navin { gap: 10px; padding-top: 10px; padding-bottom: 10px; }
+  .snav .brand { font-size: 17px; }
+  .snav .brand .mark { width: 30px; height: 30px; }
+  .heroin { grid-template-columns: minmax(0, 1fr); gap: 22px; padding-top: 24px; padding-bottom: 32px; }
+  .hero h1 { font-size: 34px; }
+  .hero .lede { font-size: 16px; margin-top: 10px; }
+  .hero .ctas { flex-direction: column; margin-top: 18px; }
+  .hero .ctas .btn { width: 100%; }
+  .beam { max-width: 400px; }
+  .band { padding: 32px 0; }
+  .band h2 { font-size: 24px; }
+  .steps { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 18px; }
+  .gets { grid-template-columns: minmax(0, 1fr); gap: 10px; margin-top: 16px; }
+  .foot .brand { width: 100%; }
+}
+@media (max-width: 360px) {
+  :root { --gutter: 16px; }
+  .btn { white-space: normal; text-align: center; }
+}
